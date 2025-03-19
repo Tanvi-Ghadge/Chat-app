@@ -59,8 +59,8 @@ UNIO is a responsive, real-time chat application that allows users to communicat
 
 1. **Clone the Repository**
    ```bash
-   git clone 
-   cd 
+   git clone https://github.com/Tanvi-Ghadge/Chat-app.git
+   cd Chat-app
 
 2. **Setup the Backend**
    ```bash
