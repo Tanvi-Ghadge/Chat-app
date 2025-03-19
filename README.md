@@ -55,4 +55,28 @@ UNIO is a responsive, real-time chat application that allows users to communicat
   ![messages Page](./screenshots/messages.png)
 
 ---
+## Installation
+
+1. **Clone the Repository**
+   ```bash
+   git clone 
+   cd 
+
+2. **Setup the Backend**
+   ```bash
+   cd ../backend
+   npm install
+   npm start
+
+4. **Setup the Frontend**
+   ```bash
+   cd ../frontend
+   npm install
+   npm run dev
+   
+6. **Usage:**
+    Open your browser and visit http://localhost:8000 (or the correct port for your frontend).
+    Register or log in to access the application.
+    
+
 
