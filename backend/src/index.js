@@ -21,11 +21,8 @@ app.use(cookieParser());
 const allowedOrigin = process.env.FRONTEND_URL || "http://localhost:5173";
 app.use(cors({ origin: allowedOrigin, credentials: true }));
 
-
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
-
-
 
 server.listen(PORT, () => {
   console.log("server is running on PORT:" + PORT);
