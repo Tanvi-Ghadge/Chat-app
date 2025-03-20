@@ -8,6 +8,8 @@ const originallowed = process.env.FRONTEND_URL || "http://localhost:5173";
 const io = new Server(server, {
   cors: {
     origin: [originallowed],
+    methods: ["GET", "POST"],
+    credentials: true,
     
   },
 });
