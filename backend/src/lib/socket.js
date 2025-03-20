@@ -4,13 +4,10 @@ import express from "express";
 
 const app = express();
 const server = http.createServer(app);
-const originallowed = process.env.FRONTEND_URL || "http://localhost:5173";
+
 const io = new Server(server, {
   cors: {
-    origin: [originallowed],
-    methods: ["GET", "POST"],
-    credentials: true,
-    
+    origin: ["http://localhost:5173"],
   },
 });
 
