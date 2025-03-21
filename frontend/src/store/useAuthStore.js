@@ -72,7 +72,7 @@ export const useAuthStore = create((set, get) => ({
       get().disconnectSocket(); // Ensure the socket disconnects
   
       // Redirect to the login page (if needed)
-      window.location.href = "/login"; 
+      window.location.href = "/"; 
     } catch (error) {
       toast.error(error.response?.data?.message || "Logout failed");
     }

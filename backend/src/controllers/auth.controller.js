@@ -80,7 +80,7 @@ export const logout = (req, res) => {
     res.cookie("jwt", null, {
       httpOnly: true,
       secure: true,
-      sameSite: "Strict",
+      sameSite: "none",
       expires: new Date(0), // Expire the cookie immediately
     });
 
