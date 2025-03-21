@@ -59,14 +59,25 @@ export const useAuthStore = create((set, get) => ({
 
   logout: async () => {
     try {
-      await axiosInstance.post("/auth/logout");
-      set({ authUser: null });
+      await axiosInstance.post("/auth/logout", {}, { withCredentials: true }); // Ensure cookies are included
+  
+      set({ authUser: null }); // Clear the user state
+  
+      // Optional: Remove any stored authentication data (if applicable)
+      localStorage.removeItem("userToken");
+      sessionStorage.removeItem("userToken");
+  
       toast.success("Logged out successfully");
-      get().disconnectSocket();
+  
+      get().disconnectSocket(); // Ensure the socket disconnects
+  
+      // Redirect to the login page (if needed)
+      window.location.href = "/login"; 
     } catch (error) {
-      toast.error(error.response.data.message);
+      toast.error(error.response?.data?.message || "Logout failed");
     }
-  },
+  };
+  
 
   updateProfile: async (data) => {
     set({ isUpdatingProfile: true });
