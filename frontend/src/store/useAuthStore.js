@@ -97,19 +97,18 @@ export const useAuthStore = create((set, get) => ({
     const { authUser } = get();
     if (!authUser || get().socket?.connected) return;
 
-    const socket = io(BASE_URL,
-      
-      {
-        reconnection: true,
-        reconnectionAttempts: 50,   // Try reconnecting for ~1.5 minutes
-        reconnectionDelay: 2000,    // Start with 2s delay
-        reconnectionDelayMax: 5000, // Max delay between attempts (5s)
-        randomizationFactor: 0.5,   // Add some randomness to prevent server overload
-        transports: ["websocket"],
+    const socket = io(BASE_URL, {
+      reconnection: true,
+      reconnectionAttempts: 50,   // Try reconnecting for ~1.5 minutes
+      reconnectionDelay: 2000,    // Start with 2s delay
+      reconnectionDelayMax: 5000, // Max delay between attempts (5s)
+      randomizationFactor: 0.5,   // Add some randomness to prevent server overload
+      transports: ["websocket"],
       query: {
         userId: authUser._id,
       },
     });
+    
     socket.connect();
 
     set({ socket: socket });
