@@ -30,7 +30,9 @@ app.use(express.urlencoded({ limit: "20mb", extended: true }));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
-
+app.get("/api/ping", (req, res) => {
+  res.send("uptime");
+});
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
