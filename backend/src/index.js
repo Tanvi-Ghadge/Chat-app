@@ -16,12 +16,26 @@ dotenv.config();
 const PORT = process.env.PORT;
 const __dirname = path.resolve();
 
+const allowedOrigins = [
+  "https://chat-app-vert-sigma.vercel.app", // your deployed frontend
+  "http://localhost:5173",                       // dev
+];
+
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:5173",
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("CORS not allowed for origin: " + origin));
+      }
+    },
     credentials: true,
   })
 );
+
+// Handle preflight requests
+app.options("*", cors());
 
 app.use(cookieParser());
 app.use(express.json({ limit: "20mb" }));  
